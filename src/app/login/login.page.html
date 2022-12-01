@@ -1,0 +1,32 @@
+<ion-content class="ion-padding-top">
+  <div class="form ion-text-center">
+    <div class="icon">
+      <ion-img
+        src="../../assets/loginPage/icon.png"
+        style="width: 100px"
+      ></ion-img>
+      <ion-img src="../../assets/loginPage/bocilBacaBuku.png"></ion-img>
+    </div>
+    <h1>Login</h1>
+    <ion-item lines="full">
+      <ion-label position="floating">Id Anggota</ion-label>
+      <ion-input
+        type="text"
+        [(ngModel)]="id_anggota"
+        required="required"
+      ></ion-input>
+    </ion-item>
+    <ion-item lines="full" class="ion-margin-top">
+      <ion-label position="floating">Password</ion-label>
+      <ion-input type="password" [(ngModel)]="password" required="required">
+      </ion-input>
+    </ion-item>
+    <ion-row>
+      <ion-col class="ion-margin-top">
+        <ion-button type="submit" color="warning" (click)="prosesLogin()"
+          >Login</ion-button
+        >
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>

@@ -1,0 +1,111 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title><span class="fontKuning">Profil</span></ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-header collapse="condense">
+    <ion-toolbar class="ion-text-center">
+      <p class="judulIOS">
+        <span class="fontKuning">Profil</span>
+      </p>
+    </ion-toolbar>
+  </ion-header>
+  <ion-card>
+    <ion-item>
+      <ion-label>
+        Id Anggota : {{id_anggota}}
+        <table class="ion-margin-top">
+          <tr>
+            <td>NIK</td>
+            <td>:</td>
+            <td>{{nik}}</td>
+          </tr>
+          <tr>
+            <td>Nama</td>
+            <td>:</td>
+            <td>{{nama}}</td>
+          </tr>
+          <tr>
+            <td>Alamat</td>
+            <td>:</td>
+            <td>{{alamat}}</td>
+          </tr>
+          <tr>
+            <td>Peran</td>
+            <td>:</td>
+            <td>{{peran}}</td>
+          </tr>
+          <tr>
+            <td>No.Telp</td>
+            <td>:</td>
+            <td>{{no_telp}}</td>
+          </tr>
+        </table>
+        <ion-button
+          color="success"
+          slot="end"
+          class="editPW"
+          expand="block"
+          [routerLink]="['/pass-edit/',id_anggota]"
+          routerLinkActive="router-link-active"
+          >Edit Password</ion-button
+        >
+      </ion-label>
+    </ion-item>
+  </ion-card>
+  <ion-header>
+    <ion-toolbar class="ion-text-center" style="padding-top: 0">
+      <p class="judulIOS"><span class="fontKuning">Riwayat</span> Peminjaman</p>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content [fullscreen]="true">
+    <ion-card *ngFor="let item of lists">
+      <ion-item>
+        <ion-label>
+          Id Peminjaman : {{item.id_peminjaman}}
+          <table class="ion-margin-top">
+            <tr>
+              <td>Judul</td>
+              <td>:</td>
+              <td>{{item.judul}}</td>
+            </tr>
+            <tr>
+              <td>Tanggal Pinjam</td>
+              <td>:</td>
+              <td>{{item.tanggal_peminjaman}}</td>
+            </tr>
+            <tr>
+              <td>Batas Kembali</td>
+              <td>:</td>
+              <td>{{item.batas_pengembalian}}</td>
+            </tr>
+            <tr *ngIf="item.status_pengembalian == 'Sudah kembali'">
+              <td>Tanggal Kembali</td>
+              <td>:</td>
+              <td>{{item.tanggal_pengembalian}}</td>
+            </tr>
+            <tr>
+              <td>Status Pinjam</td>
+              <td>:</td>
+              <td>{{item.status_pengembalian}}</td>
+            </tr>
+            <tr *ngIf="item.denda != 0 && item.denda != null">
+              <td>Denda</td>
+              <td>:</td>
+              <td>{{item.denda}}</td>
+            </tr>
+            <tr *ngIf="item.denda != 0 && item.denda != null">
+              <td>Status Denda</td>
+              <td>:</td>
+              <td>{{item.status_denda}}</td>
+            </tr>
+          </table>
+        </ion-label>
+      </ion-item>
+    </ion-card>
+  </ion-content>
+</ion-content>

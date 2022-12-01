@@ -1,0 +1,84 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title><span class="fontKuning">Data</span> Anggota</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" id="container">
+  <ion-header collapse="condense">
+    <ion-toolbar class="ion-text-center">
+      <p class="judulIOS"><span class="fontKuning">Data</span> Anggota</p>
+    </ion-toolbar>
+  </ion-header>
+  <ion-card>
+    <ion-button
+      id="tambahAnggota"
+      color="warning"
+      expand="block"
+      [routerLink]="['/anggota_tambah']"
+      >Tambah Anggota</ion-button
+    >
+  </ion-card>
+  <ion-content class="pembungkus">
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content
+        pullingIcon="chevron-down-circle-outline"
+        pullingText="Tarik Untuk Memuat Data"
+        refreshingSpinner="circles"
+        refreshingText="Memuat Ulang Data..."
+      >
+      </ion-refresher-content>
+    </ion-refresher>
+    <ion-card *ngFor="let item of lists">
+      <ion-item>
+        <ion-label>
+          Id Anggota : {{item.id_anggota}}
+          <table>
+            <tr>
+              <td>NIK</td>
+              <td>:</td>
+              <td>{{item.nik}}</td>
+            </tr>
+            <tr>
+              <td>Nama</td>
+              <td>:</td>
+              <td>{{item.nama}}</td>
+            </tr>
+            <tr>
+              <td>Alamat</td>
+              <td>:</td>
+              <td>{{item.alamat}}</td>
+            </tr>
+            <tr>
+              <td>Peran</td>
+              <td>:</td>
+              <td>{{item.peran}}</td>
+            </tr>
+            <tr>
+              <td>No Telp</td>
+              <td>:</td>
+              <td>{{item.no_telp}}</td>
+            </tr>
+          </table>
+          <div *ngIf="item.peran != 'Kepala' || role == 'Kepala'">
+            <ion-button color="success" slot="end" [routerLink]="['/anggota_edit/',item.id_anggota]"
+              routerLinkActive="router-link-active">Edit</ion-button>
+            <ion-button *ngIf="item.peran != 'Kepala'" color="danger" slot="end" (click)="deleteAnggota(item.id_anggota)">Hapus</ion-button>
+          </div>
+        </ion-label>
+      </ion-item>
+    </ion-card>
+
+    <ion-infinite-scroll (ionInfinite)="loadMore($event)">
+      <ion-infinite-scroll-content
+        loadingSpinner="circles"
+        loadingText="Sedang Memuat Data..."
+      >
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+    <ion-card style="height: 120px; visibility: hidden"> </ion-card>
+  </ion-content>
+</ion-content>

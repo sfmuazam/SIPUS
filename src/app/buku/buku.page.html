@@ -1,0 +1,98 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title><span class="fontKuning">Katalog</span> Buku</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true" id="container">
+  <ion-header collapse="condense">
+    <ion-toolbar class="ion-text-center">
+      <p class="judulIOS"><span class="fontKuning">Katalog</span> Buku</p>
+    </ion-toolbar>
+  </ion-header>
+  <ion-card>
+    <ion-button color="warning" expand="block" [routerLink]="['/buku_tambah']"
+      >Tambah Buku</ion-button
+    >
+  </ion-card>
+  <ion-content>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content
+        pullingIcon="chevron-down-circle-outline"
+        pullingText="Tarik Untuk Memuat Data"
+        refreshingSpinner="circles"
+        refreshingText="Memuat Ulang Data..."
+      >
+      </ion-refresher-content>
+    </ion-refresher>
+    <ion-card *ngFor="let item of lists">
+      <ion-item>
+        <ion-label>
+          Kd Buku : {{item.kd_buku}}
+          <ion-img
+            src="../../assets/cover/{{item.cover}}"
+            class="ion-padding-top ion-padding-bottom"
+          ></ion-img>
+          <table>
+            <tr>
+              <td>Judul</td>
+              <td>:</td>
+              <td>{{item.judul}}</td>
+            </tr>
+            <tr>
+              <td>Pengarang</td>
+              <td>:</td>
+              <td>{{item.pengarang}}</td>
+            </tr>
+            <tr>
+              <td>Penerbit</td>
+              <td>:</td>
+              <td>{{item.penerbit}}</td>
+            </tr>
+            <tr>
+              <td>Kategori</td>
+              <td>:</td>
+              <td>{{item.kategori}}</td>
+            </tr>
+            <tr>
+              <td>Lokasi</td>
+              <td>:</td>
+              <td>{{item.lokasi}}</td>
+            </tr>
+            <tr>
+              <td>Ketersediaan</td>
+              <td>:</td>
+              <td>{{item.ketersediaan}}</td>
+            </tr>
+          </table>
+          <ion-button
+            color="success"
+            class="option"
+            slot="end"
+            [routerLink]="['/buku_edit/',item.kd_buku]"
+            routerLinkActive="router-link-active"
+            >Edit</ion-button
+          >
+          <ion-button
+            color="danger"
+            class="option"
+            slot="end"
+            (click)="deleteBuku(item.kd_buku)"
+            >Hapus</ion-button
+          >
+        </ion-label>
+      </ion-item>
+    </ion-card>
+
+    <ion-infinite-scroll (ionInfinite)="loadMore($event)">
+      <ion-infinite-scroll-content
+        loadingSpinner="circles"
+        loadingText="Sedang Memuat Data..."
+      >
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+    <ion-card style="height: 120px; visibility: hidden"> </ion-card>
+  </ion-content>
+</ion-content>

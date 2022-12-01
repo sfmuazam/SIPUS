@@ -1,0 +1,59 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title><span class="fontKuning">Tambah</span> Peminjaman</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar class="ion-text-center">
+      <p class="judulIOS"><span class="fontKuning">Tambah</span> Peminjaman</p>
+    </ion-toolbar>
+  </ion-header>
+  <ion-list lines="full">
+    <ion-item>
+      <ion-label position="floating">Nama Anggota</ion-label>
+      <ion-select [(ngModel)]="id_anggota" placeholder="Pilih Anggota">
+        <ion-select-option
+          *ngFor="let item of anggota"
+          value="{{item.id_anggota}}"
+          >{{item.nama}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Buku</ion-label>
+      <ion-select [(ngModel)]="kd_buku" placeholder="Pilih Buku">
+        <ion-select-option *ngFor="let item of buku" value="{{item.kd_buku}}"
+          >{{item.judul}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Tanggal Peminjaman</ion-label>
+      <ion-note slot="end" id="open-popover1"
+        >{{tanggal_peminjaman | date}}</ion-note
+      >
+      <ion-popover trigger="open-popover1">
+        <ng-template>
+          <ion-datetime
+            presentation="date"
+            [(ngModel)]="tanggal_peminjaman"
+          ></ion-datetime>
+        </ng-template>
+      </ion-popover>
+    </ion-item>
+    <ion-row class="ion-text-center">
+      <ion-col>
+        <ion-button type="button" (click)="addPeminjaman()" color="warning"
+          >Tambah Peminjaman
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,101 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title><span class="fontKuning">Edit</span> Anggota</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar class="ion-text-center">
+      <p class="judulIOS"><span class="fontKuning">Edit</span> Anggota</p>
+    </ion-toolbar>
+  </ion-header>
+  <ion-list lines="full">
+    <ion-item>
+      <ion-label position="floating">NIK</ion-label>
+      <ion-input
+        required
+        [(ngModel)]="nik"
+        placeholder="Masukkan NIK"
+        type="number"
+      >
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Nama</ion-label>
+      <ion-input
+        required
+        [(ngModel)]="nama"
+        placeholder="Masukkan Nama"
+        type="text"
+      >
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Alamat</ion-label>
+      <ion-input
+        required
+        [(ngModel)]="alamat"
+        placeholder="Masukkan Alamat"
+        type="text"
+      >
+      </ion-input>
+    </ion-item>
+
+    <div *ngIf="role == 'Kepala'">
+    <ion-item>
+      <ion-label position="floating">Peran</ion-label>
+      <ion-select [(ngModel)]="peran" placeholder="Pilih Peran">
+        <ion-select-option *ngIf="peran == 'Kepala' && role =='Kepala'" value="Kepala">Kepala</ion-select-option>
+        <ion-select-option *ngIf="role == 'Kepala' && peran != 'Kepala' || role == 'Petugas' && peran == 'Petugas'" value="Petugas">Petugas</ion-select-option>
+        <ion-select-option *ngIf="peran != 'Kepala'" value="Anggota">Anggota</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </div>
+  <div *ngIf="role == 'Petugas'">
+    <ion-item>
+      <ion-label position="floating">Peran</ion-label>
+      <ion-select [(ngModel)]="peran" placeholder="Pilih Peran" disabled>
+        <ion-select-option>Kepala</ion-select-option>
+        <ion-select-option>Petugas</ion-select-option>
+        <ion-select-option value="Anggota">Anggota</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </div>
+
+    <ion-item>
+      <ion-label position="floating">No Telp</ion-label>
+      <ion-input
+        required
+        [(ngModel)]="no_telp"
+        placeholder="Masukkan No Telp"
+        type="tel"
+      >
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Password</ion-label>
+      <ion-input
+        required
+        [(ngModel)]="password"
+        placeholder="Masukkan Password"
+        type="hidden"
+      >
+      </ion-input>
+    </ion-item>
+    <ion-input required [(ngModel)]="id_anggota" type="hidden"> </ion-input>
+    <ion-row class="ion-text-center">
+      <ion-col>
+        <ion-button type="button" (click)="editAnggota()" color="warning"
+          >Edit Anggota
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-list>
+</ion-content>

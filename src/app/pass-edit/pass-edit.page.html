@@ -1,0 +1,57 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title><span class="fontKuning">Edit</span> Password</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar class="ion-text-center">
+      <p class="judulIOS"><span class="fontKuning">Edit</span> Password</p>
+    </ion-toolbar>
+  </ion-header>
+  <ion-list lines="full">
+    <ion-item>
+      <ion-label position="floating">Password Lama</ion-label>
+      <ion-input
+        required
+        [(ngModel)]="password_lama"
+        placeholder="Masukkan Password Lama"
+        type="text"
+      >
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Password Baru</ion-label>
+      <ion-input
+        required
+        [(ngModel)]="password_baru"
+        placeholder="Masukkan Password Baru"
+        type="text"
+      >
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Konfirmasi Password Baru</ion-label>
+      <ion-input
+        required
+        [(ngModel)]="konfirmasi_password_baru"
+        placeholder="Masukkan Konfirmasi Password Baru"
+        type="text"
+      >
+      </ion-input>
+    </ion-item>
+
+    <ion-input required [(ngModel)]="id_anggota" type="hidden"> </ion-input>
+    <ion-row class="ion-text-center">
+      <ion-col>
+        <ion-button type="button" (click)="editPassword()" color="warning"
+          >Edit Password
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-list>
+</ion-content>

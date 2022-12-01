@@ -1,0 +1,40 @@
+input {
+  font-size: 12px;
+}
+ion-item {
+  border-radius: 15px;
+}
+
+h1 {
+  margin-top: 0;
+  font-weight: bold;
+}
+ion-button {
+  --padding-start: 30px;
+  --padding-end: 30px;
+}
+
+ion-img:nth-child(1) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+ion-img:nth-child(2)::part(image) {
+  height: 35vh !important;
+  margin-top: 25px;
+}
+ion-img:nth-child(2) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+ion-content {
+  display: flex;
+  align-items: center !important;
+}
+
+.form {
+  padding: 0 9%;
+}

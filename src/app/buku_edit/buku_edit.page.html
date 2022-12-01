@@ -1,0 +1,70 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title><span class="fontKuning">Edit</span> Buku</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar class="ion-text-center">
+      <p class="judulIOS"><span class="fontKuning">Edit</span> Buku</p>
+    </ion-toolbar>
+  </ion-header>
+  <ion-list lines="full">
+    <ion-item>
+      <ion-label position="floating">Cover</ion-label>
+      <ion-input required [(ngModel)]="cov" (change)="selectedFile($event)" type="file" placeholder="Masukkan Cover" accept="image/*">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Judul</ion-label>
+      <ion-input required [(ngModel)]="judul" placeholder="Masukkan Judul" type="text">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Pengarang</ion-label>
+      <ion-input required [(ngModel)]="pengarang" placeholder="Masukkan Pengarang" type="text">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Penerbit</ion-label>
+      <ion-input required [(ngModel)]="penerbit" placeholder="Masukkan Penerbit" type="text">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Kategori</ion-label>
+      <ion-select [(ngModel)]="kategori" placeholder="Pilih Kategori">
+        <ion-select-option value="Fiksi">Fiksi</ion-select-option>
+        <ion-select-option value="Pengetahuan">Pengetahuan</ion-select-option>
+        <ion-select-option value="Sejarah">Sejarah</ion-select-option>
+        <ion-select-option value="Novel">Novel</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Lokasi</ion-label>
+      <ion-input required [(ngModel)]="lokasi" placeholder="Masukkan Lokasi" type="text">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Ketersediaan</ion-label>
+      <ion-input required [(ngModel)]="ketersediaan" placeholder="Masukkan Ketersediaan" type="number">
+      </ion-input>
+    </ion-item>
+    <ion-input required [(ngModel)]="kd_buku" type="hidden"> </ion-input>
+    <ion-row class="ion-text-center">
+      <ion-col>
+        <ion-button type="button" (click)="editBuku()" color="warning">Edit Buku
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-list>
+</ion-content>
