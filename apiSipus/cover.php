@@ -12,7 +12,7 @@ if (isset($_FILES['image'])) {
 
     echo json_encode($_FILES['image']);
 }
-
+//a
 // function uploadImage($imgName)
 // {
 //     if (isset($_FILES[$imgName])) {
