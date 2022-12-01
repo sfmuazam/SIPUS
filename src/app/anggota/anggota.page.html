@@ -35,7 +35,7 @@
     <ion-card *ngFor="let item of lists">
       <ion-item>
         <ion-label>
-          Id Anggota : {{item.id_anggota}}
+          <div class="ion-padding-top ion-padding-bottom">Id Anggota : {{item.id_anggota}}</div>
           <table>
             <tr>
               <td>NIK</td>
@@ -64,9 +64,9 @@
             </tr>
           </table>
           <div *ngIf="item.peran != 'Kepala' || role == 'Kepala'">
-            <ion-button color="success" slot="end" [routerLink]="['/anggota_edit/',item.id_anggota]"
+            <ion-button class="option" color="success" slot="end" [routerLink]="['/anggota_edit/',item.id_anggota]"
               routerLinkActive="router-link-active">Edit</ion-button>
-            <ion-button *ngIf="item.peran != 'Kepala'" color="danger" slot="end" (click)="deleteAnggota(item.id_anggota)">Hapus</ion-button>
+            <ion-button class="option" *ngIf="item.peran != 'Kepala'" color="danger" slot="end" (click)="deleteAnggota(item.id_anggota)">Hapus</ion-button>
           </div>
         </ion-label>
       </ion-item>
