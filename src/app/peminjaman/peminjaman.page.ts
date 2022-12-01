@@ -86,7 +86,7 @@ export class PeminjamanPage {
   kembalikanPeminjaman(id: any) {
     this.alertController.create({
       header: 'perhatian',
-      subHeader: 'Yakin meengembalikan buku?',
+      subHeader: 'Yakin mengembalikan buku?',
       buttons: [
         {
           text: 'Batal',
