@@ -1,3 +1,1 @@
 # SIPUS
-# SIPUS
-# Responsi2
